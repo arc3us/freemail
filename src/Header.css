@@ -24,7 +24,7 @@
     align-items: center;
     padding: 10px;
     background-color: whitesmoke;
-    border-radius: 5px;
+    border-radius: 100px;
 }
 
 .header_middle > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
@@ -38,7 +38,6 @@
     outline-width: 0;
     font-size: medium;
     background-color: transparent;
-
 }
 
 .header_right{
