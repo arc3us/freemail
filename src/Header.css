@@ -12,7 +12,7 @@
 
 .header_left > img{
     object-fit: contain;
-    height: 70px;
+    height: 3rem;
     margin-left: 5px;
     margin-top: 5px;
 }
@@ -22,7 +22,6 @@
     display: flex;
     flex: 0.7;
     align-items: center;
-    padding: 10px;
     background-color: whitesmoke;
     border-radius: 100px;
 }

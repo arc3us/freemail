@@ -22,3 +22,8 @@
     border-bottom: 1px solid whitesmoke;
     z-index: 9999;
 }
+
+.emailList_settingsRight{
+    margin-right: 15px;
+    padding-top: 10px;
+}
