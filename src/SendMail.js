@@ -4,7 +4,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "./features/mailSlice";
+import { db } from "./firebase";
 import "./SendMail.css";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { updateDoc, serverTimestamp } from "firebase/firestore";
+
 
 function SendMail() {
   const {
@@ -16,6 +22,16 @@ function SendMail() {
 
   const onSubmit = (formData) => {
     console.log(formData);
+    db.collection('emails').add(
+        {
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.subject,
+            time: serverTimestamp()
+        } 
+    )
+
+  dispatch(closeSendMessage());
   };
 
   const dispatch = useDispatch();
@@ -33,7 +49,7 @@ function SendMail() {
         <input
           name="to"
           placeholder="To"
-          type="text"
+          type="email"
           {...register("to", { required: true })}
         />
         <p>
