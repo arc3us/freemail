@@ -22,20 +22,19 @@ function EmailList() {
 
   useEffect(() => {
     db.collection("emails")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) =>
+      .get()
+      .then((collection) => {
         setEmails(
-          snapshot.docs.map((doc) => ({
+          collection.docs.map((doc) => ({
             id: doc.id,
             data: doc.data(),
           }))
-        )
-      );
+        );
+      });
   });
 
   return (
     <div className="emailList">
-       { console.log(db.collection("emails"))}
       <div className="emailList_settings">
         <div className="emailList_settingsLeft">
           <IconButton>
@@ -73,17 +72,16 @@ function EmailList() {
         <Section Icon={LocalOffer} title="Promotions" color="green" />
       </div>
       <div className="emailList_list">
-          {emails.map(({id, data: {to, subject,  message, timestamp}})=>(
-              <EmailRow 
-                id={id}
-                key={id}
-                title = {to}
-                subject={subject}
-                description = {message}
-                time ={new Date(timestamp?.seconds * 1000).toUTCString()}
-              />
-
-          ))}
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        ))}
       </div>
     </div>
   );

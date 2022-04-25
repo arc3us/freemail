@@ -26,7 +26,7 @@ function SendMail() {
         {
             to: formData.to,
             subject: formData.subject,
-            message: formData.subject,
+            message: formData.message,
             time: serverTimestamp()
         } 
     )
