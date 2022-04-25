@@ -6,17 +6,15 @@ import { useDispatch } from "react-redux";
 import { closeSendMessage } from "./features/mailSlice";
 import { db } from "./firebase";
 import "./SendMail.css";
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import { updateDoc, serverTimestamp } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
 
 
 function SendMail() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -27,7 +25,7 @@ function SendMail() {
             to: formData.to,
             subject: formData.subject,
             message: formData.message,
-            time: serverTimestamp()
+            timestamp: serverTimestamp()
         } 
     )
 
